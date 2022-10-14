@@ -6,6 +6,7 @@ const session = require('express-session');
 const port = process.env.PORT || 5000;
 const connectDB = require('./config/db');
 const passport = require('passport');
+const passportConfigs = require('./config/passport');
 
 connectDB();
 
@@ -25,7 +26,15 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
+passportConfigs();
+
+app.use(function (req, res, next) {
+  res.locals.currentUser = req.user;
+  next();
+});
+
 app.use('/', require('./routes/home'));
 app.use('/sign-up', require('./routes/sign-up'));
+app.use('/log-in', require('./routes/log-in'));
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
