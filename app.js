@@ -25,6 +25,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/', require('./routes/login'));
+app.use('/', require('./routes/home'));
+app.use('/sign-up', require('./routes/sign-up'));
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
