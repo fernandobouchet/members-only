@@ -1,22 +1,27 @@
 const express = require('express');
 const User = require('../models/user');
 const router = express.Router();
+const bcryptjs = require('bcryptjs');
 
 router.get('/', (req, res) => {
   res.render('sign-up');
 });
 
 router.post('/', (req, res) => {
-  const user = new User({
-    username: req.body.username,
-    lastname: req.body.lastname,
-    email: req.body.email,
-    password: req.body.password,
-  }).save((err) => {
+  bcryptjs.hash(req.body.password, 10, (err, hashedPassword) => {
     if (err) {
-      return next(err);
+      console.log(err);
     }
-    res.redirect('/');
+    const user = new User({
+      username: req.body.username,
+      email: req.body.email,
+      password: hashedPassword,
+    }).save((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect('/');
+    });
   });
 });
 
