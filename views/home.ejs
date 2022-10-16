@@ -13,6 +13,7 @@
       <nav>
         <% if (currentUser) {%>
         <a href="/log-out"> <button>Log Out</button></a>
+        <a href="/join"><button>Join the club</button></a>
         <% } else { %>
         <a href="/sign-up"><button>Sign Up</button></a>
         <a href="/log-in"><button>Log In</button></a>
@@ -31,10 +32,13 @@
         <article>
           <h5><%= message.title %></h5>
           <p><%= message.text %></p>
-          <% if (currentUser && (currentUser.status === "member" ||
-          currentUser.status === "admin")) {%>
+          <% if (currentUser && (currentUser.member_status === "member" ||
+          currentUser.member_status === "admin")) {%>
           <h6><%= message.date_formated %></h6>
           <h6><%= message.user %></h6>
+          <% } else { %>
+          <h6>********</h6>
+          <h6>********</h6>
           <%}%>
         </article>
         <% })%>
