@@ -1,0 +1,35 @@
+header {
+  display: flex;
+  padding: 0 !important;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+header > nav a,
+header > nav a:visited {
+  border: none;
+  padding: 0;
+}
+
+#message-button-container {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 1rem 0;
+}
+
+h6,
+h5,
+p {
+  margin: 0.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}

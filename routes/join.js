@@ -12,7 +12,10 @@ router.post('/', async (req, res) => {
     req.user.id,
     {
       member_status:
-        req.body.secret_key !== null ? req.body.secret_key : user.member_status,
+        req.body.secret_key !== 'normal' &&
+        (req.body.secret_key === 'member' || req.body.secret_key === 'admin')
+          ? req.body.secret_key
+          : user.member_status,
     },
     {}
   );

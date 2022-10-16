@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Members Only</title>
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <header style="display: flex">
+    <header>
       <h1>Members Only</h1>
       <nav>
         <% if (currentUser) {%>
@@ -21,28 +22,32 @@
       </nav>
     </header>
     <main>
-      <div>
+      <div id="message-button-container">
         <% if (currentUser && (currentUser.member_status === "member" ||
         currentUser.member_status === "admin")) {%>
         <button onclick="location.href='/message'">New Message</button>
         <%}%>
       </div>
-      <section>
+      <div>
         <% messages.forEach((message) => { %>
         <article>
-          <h5><%= message.title %></h5>
-          <p><%= message.text %></p>
-          <% if (currentUser && (currentUser.member_status === "member" ||
-          currentUser.member_status === "admin")) {%>
-          <h6><%= message.date_formated %></h6>
-          <h6><%= message.user %></h6>
-          <% } else { %>
-          <h6>********</h6>
-          <h6>********</h6>
-          <%}%>
+          <h5>Tltle: <%= message.title %></h5>
+          <p>Message: <%= message.text %></p>
+          <div class="card-footer">
+            <h6>
+              Author: <% if (currentUser && (currentUser.member_status ===
+              "member" || currentUser.member_status === "admin")) {%> <%=
+              message.user %> <% } else { %> ******** <%}%>
+            </h6>
+            <h6>
+              Date: <% if (currentUser && (currentUser.member_status ===
+              "member" || currentUser.member_status === "admin")) {%> <%=
+              message.date_formated %> <% } else { %> ******** <%}%>
+            </h6>
+          </div>
         </article>
         <% })%>
-      </section>
+      </div>
     </main>
   </body>
 </html>
