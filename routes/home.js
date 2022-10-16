@@ -1,8 +1,10 @@
 const express = require('express');
+const Message = require('../models/messages');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.render('home');
+router.get('/', async (req, res) => {
+  const messages = await Message.find();
+  res.render('home', { messages: messages });
 });
 
 router.get('/log-out', (req, res, next) => {
