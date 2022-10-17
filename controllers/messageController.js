@@ -17,4 +17,11 @@ const postMessage = async (req, res) => {
   res.redirect('/');
 };
 
-module.exports = { postMessage, getMessage };
+const deleteMessage = async (req, res) => {
+  const message = await Message.findById(req.body.messageid);
+  await message.remove();
+  res.status(200);
+  res.redirect('/');
+};
+
+module.exports = { postMessage, getMessage, deleteMessage };

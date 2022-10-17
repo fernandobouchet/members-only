@@ -31,7 +31,7 @@
       <div>
         <% messages.forEach((message) => { %>
         <article>
-          <h5>Tltle: <%= message.title %></h5>
+          <h5>Title: <%= message.title %></h5>
           <p>Message: <%= message.text %></p>
           <div class="card-footer">
             <h6>
@@ -45,8 +45,36 @@
               message.date_formated %> <% } else { %> ******** <%}%>
             </h6>
           </div>
+          <% if (currentUser && currentUser.member_status === "admin") {%>
+          <form action="message/delete" method="POST">
+            <input
+              type="hidden"
+              name="messageid"
+              required
+              value="<%= message._id %>"
+            />
+            <button>Delete message</button>
+          </form>
+          <%}%>
         </article>
         <% })%>
+        <article>
+          <h5>Title: Members Only</h5>
+          <p>
+            Message: You need to sign-up first, an then you can enter the
+            "secret keys" to "join the club" as member (to be able to see
+            messages date's and author's, and create new messages) or as an
+            admin (same "benefits" as members but you can delete messages too!).
+          </p>
+          <ul>
+            <li>Member secret key -> member</li>
+            <li>Admin secret key -> admin</li>
+          </ul>
+          <div class="card-footer">
+            <h6>Author: fernandobouchet</h6>
+            <h6>Date: 15 oct 2022</h6>
+          </div>
+        </article>
       </div>
     </main>
   </body>
