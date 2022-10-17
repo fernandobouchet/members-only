@@ -13,15 +13,15 @@
       <h1>Members Only</h1>
       <nav>
         <% if (currentUser) {%>
-        <a href="/log-out"> <button>Log Out</button></a>
-        <a href="/join"><button>Join the club</button></a>
+        <a href="/user/log-out"> <button>Log Out</button></a>
+        <a href="/user/join"><button>Join the club</button></a>
         <% } else { %>
-        <a href="/sign-up"><button>Sign Up</button></a>
-        <a href="/log-in"><button>Log In</button></a>
+        <a href="/user/sign-up"><button>Sign Up</button></a>
+        <a href="/user/log-in"><button>Log In</button></a>
         <%}%>
       </nav>
     </header>
-    <form action="/sign-up" method="POST">
+    <form action="/user/sign-up" method="POST">
       <label for="username">Username</label>
       <input type="text" name="username" placeholder="username" required />
       <label for="email">Email</label>

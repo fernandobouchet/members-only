@@ -35,9 +35,7 @@ app.use(function (req, res, next) {
 });
 
 app.use('/', require('./routes/home'));
-app.use('/sign-up', require('./routes/sign-up'));
-app.use('/log-in', require('./routes/log-in'));
-app.use('/message', require('./routes/message-form'));
-app.use('/join', require('./routes/join'));
+app.use('/user', require('./routes/user'));
+app.use('/message', require('./routes/message'));
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
