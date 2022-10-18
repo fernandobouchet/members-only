@@ -41,7 +41,24 @@
         placeholder="password"
         required
       />
+      <label for="passwordConfirmation">Confirm password</label>
+      <input
+        type="password"
+        name="passwordConfirmation"
+        id="passwordConfirmation"
+        placeholder="password"
+        required
+      />
       <button>Sign Up</button>
     </form>
+    <div>
+      <% if (errors) {%>
+      <ul>
+        <% errors.forEach((error) => { %>
+        <li><%= error.msg %></li>
+        <% })%>
+      </ul>
+      <%}%>
+    </div>
   </body>
 </html>
