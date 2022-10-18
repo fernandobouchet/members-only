@@ -34,8 +34,13 @@ app.use(function (req, res, next) {
   next();
 });
 
+let ensureAuthenticated = function (req, res, next) {
+  if (req.isAuthenticated()) return next();
+  else res.redirect('/');
+};
+
 app.use('/', require('./routes/home'));
 app.use('/user', require('./routes/user'));
-app.use('/message', require('./routes/message'));
+app.use('/message', ensureAuthenticated, require('./routes/message'));
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
