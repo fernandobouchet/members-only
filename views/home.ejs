@@ -22,12 +22,17 @@
       </nav>
     </header>
     <main>
-      <div id="message-button-container">
-        <% if (currentUser && (currentUser.member_status === "member" ||
-        currentUser.member_status === "admin")) {%>
-        <button onclick="location.href='/message'">New Message</button>
-        <%}%>
+      <% if (currentUser && (currentUser.member_status === "member" ||
+      currentUser.member_status === "admin")) {%>
+      <div style="display: flex; justify-content: space-evenly">
+        <h5>User: <%= currentUser.username %></h5>
+        <h5>Member type: <%= currentUser.member_status %></h5>
       </div>
+      <div id="message-button-container">
+        <button onclick="location.href='/message'">New Message</button>
+      </div>
+      <%}%>
+
       <div>
         <% messages.forEach((message) => { %>
         <article>
