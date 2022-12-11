@@ -8,4 +8,4 @@ Project was created as part of one of the ['TOP'](https://www.theodinproject.com
 Used express, mongoDB as database with mongoose, Passport to sign-up / log-in, bcryptjs to encrypt password and express-validator for form's validations.
 
 
-[Live Demo in Fly.io](https://membersonly.fly.dev/) :point_left:
+[Live Demo on Render](https://membersonly.onrender.com/) :point_left:
